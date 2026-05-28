@@ -299,28 +299,25 @@ export default function Index() {
             </div>
           </FadeUp>
           <FadeUp delay={100}>
-            {/* Популярный label */}
-            <div className="flex gap-0 mb-2 overflow-x-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {tariffs.map((t, i) => (
-                <div key={i} className="tariff-card" style={{ width: 160, minWidth: 160 }}>
-                  {t.popular ? <span className="text-xs font-bold text-[#CC1D1D] ml-2">Популярный</span> : <span className="text-xs text-transparent">_</span>}
-                </div>
-              ))}
-            </div>
-            <div className="tariff-scroll">
-              {tariffs.map((t, i) => (
-                <div key={i} className={`tariff-card rounded-2xl border-2 transition-all cursor-pointer overflow-hidden ${t.popular ? "border-[#CC1D1D] shadow-md shadow-red-100" : "border-gray-200 hover:border-[#CC1D1D] hover:shadow-md hover:shadow-red-50"}`} style={{ width: 160, minWidth: 160 }}>
-                  <div className={`px-3 py-2.5 text-xs font-bold uppercase tracking-wide ${t.popular ? "bg-[#CC1D1D] text-white" : "bg-gray-100 text-gray-500"}`}>
-                    {t.label}
-                    <span className="block font-normal normal-case text-[11px] mt-0.5 opacity-80">{t.sublabel}</span>
-                  </div>
-                  <div className="p-3">
-                    <div className="w-9 h-9 rounded-xl bg-red-50 flex items-center justify-center mb-2">
-                      <Icon name={t.icon} size={18} className="text-[#CC1D1D]" />
+                <div key={i} className="relative">
+                  {t.popular && (
+                    <span className="absolute -top-3 left-3 text-xs font-bold text-[#CC1D1D] bg-white px-2">Популярный</span>
+                  )}
+                  <div className={`rounded-2xl border-2 transition-all cursor-pointer overflow-hidden h-full ${t.popular ? "border-[#CC1D1D] shadow-md shadow-red-100" : "border-gray-200 hover:border-[#CC1D1D] hover:shadow-md hover:shadow-red-50"}`}>
+                    <div className={`px-4 py-3 text-xs font-bold uppercase tracking-wide ${t.popular ? "bg-[#CC1D1D] text-white" : "bg-gray-100 text-gray-500"}`}>
+                      {t.label}
+                      <span className="block font-normal normal-case text-[11px] mt-0.5 opacity-80">{t.sublabel}</span>
                     </div>
-                    <p className="text-[13px] font-semibold text-gray-800 mb-1 leading-snug">{t.name}</p>
-                    <p className="text-[13px] font-bold" style={{ color: R }}>{t.price}</p>
-                    <button className="mt-3 w-full border border-gray-200 hover:border-[#CC1D1D] text-gray-700 hover:text-[#CC1D1D] rounded-xl text-xs py-1.5 transition-colors font-medium">Заказать</button>
+                    <div className="p-4 flex flex-col h-full">
+                      <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mb-3">
+                        <Icon name={t.icon} size={20} className="text-[#CC1D1D]" />
+                      </div>
+                      <p className="text-sm font-semibold text-gray-800 mb-1 leading-snug">{t.name}</p>
+                      <p className="text-base font-bold mb-3" style={{ color: R }}>{t.price}</p>
+                      <button className="mt-auto w-full border border-gray-200 hover:border-[#CC1D1D] text-gray-700 hover:text-[#CC1D1D] rounded-xl text-xs py-2 transition-colors font-medium">Заказать</button>
+                    </div>
                   </div>
                 </div>
               ))}
