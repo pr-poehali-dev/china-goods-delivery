@@ -64,12 +64,12 @@ function AccountModal({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<"login" | "reg">("login");
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
-      <div className="bg-white rounded-lg p-8 w-full max-w-sm mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
+      <div className="bg-white rounded-3xl p-8 w-full max-w-sm mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-5">
           <span className="font-bold text-lg">Личный кабинет</span>
           <button onClick={onClose}><Icon name="X" size={20} className="text-gray-400 hover:text-gray-700" /></button>
         </div>
-        <div className="flex border border-gray-200 rounded overflow-hidden mb-5">
+        <div className="flex border border-gray-200 rounded-2xl overflow-hidden mb-5">
           {(["login", "reg"] as const).map(t => (
             <button key={t} onClick={() => setTab(t)}
               className={`flex-1 py-2 text-sm font-semibold transition-colors ${tab === t ? "bg-[#CC1D1D] text-white" : "text-gray-500 hover:bg-gray-50"}`}>
@@ -78,9 +78,9 @@ function AccountModal({ onClose }: { onClose: () => void }) {
           ))}
         </div>
         <div className="space-y-3">
-          {tab === "reg" && <input placeholder="Имя / Компания" className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />}
-          <input type="email" placeholder="Email" className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
-          <input type="password" placeholder="Пароль" className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
+          {tab === "reg" && <input placeholder="Имя / Компания" className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />}
+          <input type="email" placeholder="Email" className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
+          <input type="password" placeholder="Пароль" className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
           <button className="btn-red w-full justify-center">{tab === "login" ? "Войти" : "Создать аккаунт"}</button>
         </div>
       </div>
@@ -100,7 +100,7 @@ function TrackingModal({ onClose }: { onClose: () => void }) {
   ];
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
-      <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
+      <div className="bg-white rounded-3xl p-6 w-full max-w-md mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
           <span className="font-bold text-lg">Отслеживание заказа</span>
           <button onClick={onClose}><Icon name="X" size={20} className="text-gray-400 hover:text-gray-700" /></button>
@@ -108,7 +108,7 @@ function TrackingModal({ onClose }: { onClose: () => void }) {
         <div className="flex gap-2 mb-4">
           <input value={num} onChange={e => setNum(e.target.value)} onKeyDown={e => e.key === "Enter" && setRes(num.toUpperCase().startsWith("SR") ? "found" : "not-found")}
             placeholder="Номер заказа (напр. SR-2026-00345)"
-            className="flex-1 border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
+            className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
           <button className="btn-red" onClick={() => setRes(num.toUpperCase().startsWith("SR") ? "found" : "not-found")}>Найти</button>
         </div>
         {res === "found" && (
@@ -253,12 +253,12 @@ export default function Index() {
           </div>
           {/* Right: quick calc widget */}
           <FadeUp delay={150} className="hidden md:block">
-            <div className="bg-white text-gray-900 rounded-lg p-6 shadow-2xl max-w-sm ml-auto">
+            <div className="bg-white text-gray-900 rounded-3xl p-6 shadow-2xl max-w-sm ml-auto">
               <p className="font-bold text-base mb-4">Нужна помощь или выбираете в первый раз?</p>
               <p className="text-sm text-gray-500 mb-4">Получите индивидуальный расчёт стоимости доставки</p>
               <div className="space-y-3">
-                <input placeholder="Ваш телефон или WhatsApp" className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
-                <input placeholder="Тип товара" className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
+                <input placeholder="Ваш телефон или WhatsApp" className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
+                <input placeholder="Тип товара" className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D]" />
                 <button className="btn-red w-full justify-center py-3">Получить расчёт</button>
               </div>
             </div>
@@ -289,10 +289,10 @@ export default function Index() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Виды доставки<br />и тарифы</h2>
               </div>
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 max-w-xs">
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 max-w-xs">
                 <p className="text-sm font-semibold text-gray-800 mb-2">Нужна помощь или выбираете в первый раз?</p>
                 <div className="flex gap-2">
-                  <input placeholder="Ваш телефон" className="flex-1 border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#CC1D1D] min-w-0" />
+                  <input placeholder="Ваш телефон" className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-[#CC1D1D] min-w-0" />
                   <button className="btn-red text-xs px-4 py-2">Получить</button>
                 </div>
               </div>
@@ -309,18 +309,18 @@ export default function Index() {
             </div>
             <div className="tariff-scroll">
               {tariffs.map((t, i) => (
-                <div key={i} className={`tariff-card rounded-lg border-2 transition-all cursor-pointer ${t.popular ? "border-[#CC1D1D]" : "border-gray-200 hover:border-[#CC1D1D]"}`} style={{ width: 160, minWidth: 160 }}>
-                  <div className={`rounded-t-md px-3 py-2 text-xs font-bold uppercase tracking-wide ${t.popular ? "bg-[#CC1D1D] text-white" : "bg-gray-100 text-gray-500"}`}>
+                <div key={i} className={`tariff-card rounded-2xl border-2 transition-all cursor-pointer overflow-hidden ${t.popular ? "border-[#CC1D1D] shadow-md shadow-red-100" : "border-gray-200 hover:border-[#CC1D1D] hover:shadow-md hover:shadow-red-50"}`} style={{ width: 160, minWidth: 160 }}>
+                  <div className={`px-3 py-2.5 text-xs font-bold uppercase tracking-wide ${t.popular ? "bg-[#CC1D1D] text-white" : "bg-gray-100 text-gray-500"}`}>
                     {t.label}
                     <span className="block font-normal normal-case text-[11px] mt-0.5 opacity-80">{t.sublabel}</span>
                   </div>
                   <div className="p-3">
-                    <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center mb-2">
+                    <div className="w-9 h-9 rounded-xl bg-red-50 flex items-center justify-center mb-2">
                       <Icon name={t.icon} size={18} className="text-[#CC1D1D]" />
                     </div>
                     <p className="text-[13px] font-semibold text-gray-800 mb-1 leading-snug">{t.name}</p>
                     <p className="text-[13px] font-bold" style={{ color: R }}>{t.price}</p>
-                    <button className="mt-3 w-full border border-gray-200 hover:border-[#CC1D1D] text-gray-700 hover:text-[#CC1D1D] rounded text-xs py-1.5 transition-colors font-medium">Заказать</button>
+                    <button className="mt-3 w-full border border-gray-200 hover:border-[#CC1D1D] text-gray-700 hover:text-[#CC1D1D] rounded-xl text-xs py-1.5 transition-colors font-medium">Заказать</button>
                   </div>
                 </div>
               ))}
@@ -336,7 +336,7 @@ export default function Index() {
             <FadeUp>
               <h2 className="text-2xl md:text-3xl font-bold mb-2">Как мы помогаем нашим клиентам</h2>
               <p className="text-gray-500 text-sm mb-6">в работе с Китаем</p>
-              <div className="relative rounded-lg overflow-hidden mb-4">
+              <div className="relative rounded-2xl overflow-hidden mb-4">
                 <img src={WAREHOUSE_IMG} alt="Склад" className="w-full h-52 object-cover" />
                 <div className="absolute inset-0 bg-black/50 flex items-end p-5">
                   <div>
@@ -355,7 +355,7 @@ export default function Index() {
                   <p className="text-xl font-bold text-gray-900 mt-1">Надёжно</p>
                   <p className="text-gray-400 text-sm">Выгодно</p>
                 </div>
-                <img src={TEAM_IMG} alt="Команда" className="w-full h-36 object-cover rounded-lg" />
+                <img src={TEAM_IMG} alt="Команда" className="w-full h-36 object-cover rounded-2xl" />
               </div>
               <div className="space-y-5">
                 {steps.slice(1, 3).map((s, i) => (
@@ -374,8 +374,8 @@ export default function Index() {
           {/* 3 service cards */}
           <FadeUp delay={150} className="grid md:grid-cols-3 gap-5 mt-12">
             {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-lg border border-gray-200 p-5 hover:border-[#CC1D1D] hover:shadow-md transition-all">
-                <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center mb-3">
+              <div key={i} className="bg-white rounded-2xl border border-gray-200 p-5 hover:border-[#CC1D1D] hover:shadow-lg hover:shadow-red-50 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mb-3">
                   <Icon name={s.icon} size={20} className="text-[#CC1D1D]" />
                 </div>
                 <p className="font-bold text-[15px] text-gray-900 mb-2 leading-snug">{s.title}</p>
@@ -423,7 +423,7 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8 rounded-lg overflow-hidden">
+              <div className="mt-8 rounded-2xl overflow-hidden">
                 <img src={TEAM_IMG} alt="Склад Китай" className="w-full h-48 object-cover" />
               </div>
             </FadeUp>
@@ -466,7 +466,7 @@ export default function Index() {
                   { num: "150 000+", label: "доставок" },
                   { num: "98%", label: "грузов в срок" },
                 ].map(s => (
-                  <div key={s.label} className="bg-white rounded-lg border border-gray-200 p-3 text-center">
+                  <div key={s.label} className="bg-white rounded-2xl border border-gray-200 p-3 text-center">
                     <p className="text-2xl font-bold" style={{ color: R }}>{s.num}</p>
                     <p className="text-gray-500 text-xs mt-0.5">{s.label}</p>
                   </div>
@@ -475,7 +475,7 @@ export default function Index() {
               <a href="#contacts" className="btn-red">Связаться с нами</a>
             </FadeUp>
             <FadeUp delay={100}>
-              <img src={TEAM_IMG} alt="Команда СилкРоут" className="rounded-lg w-full object-cover h-72 md:h-96" />
+              <img src={TEAM_IMG} alt="Команда СилкРоут" className="rounded-2xl w-full object-cover h-72 md:h-96" />
             </FadeUp>
           </div>
         </div>
@@ -494,7 +494,7 @@ export default function Index() {
           </FadeUp>
           <FadeUp delay={100} className="grid md:grid-cols-2 gap-5">
             {articles.map((a, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-gray-200 hover:border-[#CC1D1D] hover:shadow-md transition-all cursor-pointer group">
+              <div key={i} className="rounded-2xl overflow-hidden border border-gray-200 hover:border-[#CC1D1D] hover:shadow-lg hover:shadow-red-50 transition-all cursor-pointer group">
                 <div className="relative h-44">
                   <img src={a.img} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black/30" />
@@ -550,20 +550,20 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-              <img src={WAREHOUSE_IMG} alt="" className="rounded-lg w-full h-40 object-cover" />
+              <img src={WAREHOUSE_IMG} alt="" className="rounded-2xl w-full h-40 object-cover" />
             </FadeUp>
             <FadeUp delay={100}>
-              <div className="bg-gray-50 rounded-lg border border-gray-200 p-6">
+              <div className="bg-gray-50 rounded-3xl border border-gray-200 p-6">
                 <h3 className="font-bold text-lg mb-4">Заявка на расчёт доставки</h3>
                 <div className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
-                    <input placeholder="Ваше имя" className="border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
-                    <input placeholder="Телефон / WhatsApp" className="border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
+                    <input placeholder="Ваше имя" className="border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
+                    <input placeholder="Телефон / WhatsApp" className="border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
                   </div>
-                  <input placeholder="Тип товара" className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
+                  <input placeholder="Тип товара" className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
                   <div className="grid grid-cols-2 gap-3">
-                    <input placeholder="Вес (кг)" type="number" className="border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
-                    <select className="border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white text-gray-700">
+                    <input placeholder="Вес (кг)" type="number" className="border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white" />
+                    <select className="border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white text-gray-700">
                       <option value="">Способ доставки</option>
                       <option>Авиа</option>
                       <option>Авто</option>
@@ -571,7 +571,7 @@ export default function Index() {
                       <option>Море</option>
                     </select>
                   </div>
-                  <textarea placeholder="Дополнительные пожелания" rows={3} className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white resize-none" />
+                  <textarea placeholder="Дополнительные пожелания" rows={3} className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#CC1D1D] bg-white resize-none" />
                   <button className="btn-red w-full justify-center py-3">
                     <Icon name="Send" size={15} />Отправить заявку
                   </button>
@@ -618,7 +618,7 @@ export default function Index() {
 
       {/* Floating CTA */}
       <button onClick={() => setTrackOpen(true)}
-        className="fixed bottom-6 right-6 z-30 btn-red rounded-full w-14 h-14 p-0 flex items-center justify-center shadow-lg shadow-red-900/30 hover:scale-110 transition-transform"
+        className="fixed bottom-6 right-6 z-30 btn-red rounded-2xl w-14 h-14 p-0 flex items-center justify-center hover:scale-110 transition-transform"
         title="Отследить заказ">
         <Icon name="MapPin" size={22} />
       </button>
